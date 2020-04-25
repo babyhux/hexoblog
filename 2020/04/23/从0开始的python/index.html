@@ -12,15 +12,15 @@
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="1先打印出来吧 这里慢慢修改">
+    <meta name="description" content="1先打印出来吧 这里慢慢修改 2可以打印出各种数据了再查看下页面怎么处理 3昨天在家里给弄好了整个代码其实不多给传到这里吧 123456789101112131415161718192021222324252627282930313233# -*- coding: UTF-8 -*-import reimport requestsimport osimport sysimport timeimpo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从0开始的python">
 <meta property="og:url" content="https://babyhux.github.io/hexoblog/2020/04/23/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84python/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1先打印出来吧 这里慢慢修改">
+<meta property="og:description" content="1先打印出来吧 这里慢慢修改 2可以打印出各种数据了再查看下页面怎么处理 3昨天在家里给弄好了整个代码其实不多给传到这里吧 123456789101112131415161718192021222324252627282930313233# -*- coding: UTF-8 -*-import reimport requestsimport osimport sysimport timeimpo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-23T07:48:41.000Z">
-<meta property="article:modified_time" content="2020-04-23T07:56:04.161Z">
+<meta property="article:modified_time" content="2020-04-25T00:48:08.069Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
     
@@ -189,7 +189,9 @@
         
         <div class="article-entry" itemprop="articleBody">
             <h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>先打印出来吧 这里慢慢修改</p>
-
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>可以打印出各种数据了<br>再查看下页面怎么处理</p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>昨天在家里给弄好了<br>整个代码其实不多<br>给传到这里吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">import time</span><br><span class="line">import json</span><br><span class="line">import math</span><br><span class="line">import you_get</span><br><span class="line"></span><br><span class="line">def getVideoInfo(bilibiliUserId):</span><br><span class="line">        headers &#x3D; &#123;&#39;User-agent&#39;: &#39;Mozilla&#x2F;5.0 (Windows NT 6.1; WOW64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;63.0.3239.132 Safari&#x2F;537.36&#39;&#125;</span><br><span class="line">        videoUrl &#x3D; &#39;https:&#x2F;&#x2F;api.bilibili.com&#x2F;x&#x2F;space&#x2F;navnum?mid&#x3D;&#39;+bilibiliUserId</span><br><span class="line">        getPage &#x3D; requests.get(videoUrl, headers&#x3D;headers)</span><br><span class="line">        x &#x3D; getPage.json()</span><br><span class="line">        pageNumber &#x3D; math.ceil(x[&#39;data&#39;][&#39;video&#39;] &#x2F; 30)</span><br><span class="line">        i &#x3D; 0</span><br><span class="line">        path &#x3D; &#39;d:&#x2F;temp&#39;</span><br><span class="line">        while i &lt; pageNumber:</span><br><span class="line">                i &#x3D; i + 1</span><br><span class="line">                bilibiliUrl &#x3D; &#39;https:&#x2F;&#x2F;api.bilibili.com&#x2F;x&#x2F;space&#x2F;arc&#x2F;search?mid&#x3D;&#39; + bilibiliUserId + &#39;&amp;ps&#x3D;30&amp;tid&#x3D;0&amp;pn&#x3D; &#39;+ str(i+1)+&#39; &amp;keyword&#x3D;&amp;order&#x3D;pubdate&amp;jsonp&#x3D;jsonp&#39;</span><br><span class="line">                getContent &#x3D; requests.get(bilibiliUrl, headers&#x3D;headers)</span><br><span class="line">                x2 &#x3D; getContent.json()</span><br><span class="line">                for items in x2[&#39;data&#39;][&#39;list&#39;][&#39;vlist&#39;]:</span><br><span class="line">                        pageUrl &#x3D; &#39;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;&#39; + items[&#39;bvid&#39;]</span><br><span class="line">                        sys.argv &#x3D; [&#39;you-get&#39;, &#39;-o&#39;, path, pageUrl]</span><br><span class="line">                        print(items[&#39;author&#39;] + &#39; - &#39; + items[&#39;title&#39;] + &#39;，视频ID &#x3D; &#39; + items[&#39;bvid&#39;])</span><br><span class="line">                        you_get.main()</span><br><span class="line">                        </span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">        a &#x3D; input(&quot;请输入UP主的ID:&quot;)</span><br><span class="line">        getVideoInfo(a)</span><br></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
@@ -272,11 +274,13 @@
         "genre": "",
         "datePublished": "2020-04-23",
         "dateCreated": "2020-04-23",
-        "dateModified": "2020-04-23",
+        "dateModified": "2020-04-25",
         "url": "https://babyhux.github.io/hexoblog/2020/04/23/从0开始的python/",
         "description": "1先打印出来吧 这里慢慢修改
-",
-        "wordCount": 6
+2可以打印出各种数据了再查看下页面怎么处理
+3昨天在家里给弄好了整个代码其实不多给传到这里吧
+123456789101112131415161718192021222324252627282930313233# -*- coding: UTF-8 -*-import reimport requestsimport osimport sysimport timeimpo",
+        "wordCount": 455
     }
 </script>
 
