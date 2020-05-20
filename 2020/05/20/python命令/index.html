@@ -12,15 +12,15 @@
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="##大概记录下安装包的语句pip install 包名更新pip工具python -m pip install –upgrade pip查看包的路径和依赖pip show 包名查看包的命令帮助包名-h根据文本安装 pip install -r requirement.txt">
+    <meta name="description" content="##大概记录下安装包的语句pip install 包名更新pip工具python -m pip install –upgrade pip查看包的路径和依赖pip show 包名查看包的命令帮助包名-h根据文本安装 pip install -r requirement.txt ##任务框架APSchedulerAPScheduler是Python的一个定时任务框架，用于执行周期或者定时任务，可以基于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python命令">
 <meta property="og:url" content="https://babyhux.github.io/hexoblog/2020/05/20/python%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="##大概记录下安装包的语句pip install 包名更新pip工具python -m pip install –upgrade pip查看包的路径和依赖pip show 包名查看包的命令帮助包名-h根据文本安装 pip install -r requirement.txt">
+<meta property="og:description" content="##大概记录下安装包的语句pip install 包名更新pip工具python -m pip install –upgrade pip查看包的路径和依赖pip show 包名查看包的命令帮助包名-h根据文本安装 pip install -r requirement.txt ##任务框架APSchedulerAPScheduler是Python的一个定时任务框架，用于执行周期或者定时任务，可以基于">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-20T06:15:11.000Z">
-<meta property="article:modified_time" content="2020-05-20T06:19:30.065Z">
+<meta property="article:modified_time" content="2020-05-20T06:40:37.941Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
     
@@ -189,6 +189,12 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>##<br>大概记录下<br>安装包的语句pip install 包名<br>更新pip工具python -m pip install –upgrade pip<br>查看包的路径和依赖pip show 包名<br>查看包的命令帮助包名-h<br>根据文本安装 pip install -r requirement.txt</p>
+<p>##任务框架APScheduler<br>APScheduler是Python的一个定时任务框架，用于执行周期或者定时任务，<br>可以基于日期、时间间隔，及类似于Linux上的定时任务crontab类型的定时任务；<br>该该框架不仅可以添加、删除定时任务，还可以将任务存储到数据库中，实现任务的持久化，使用起来非常方便。<br>安装方式：pip install apscheduler<br>apscheduler组件及简单说明：</p>
+<p>1&gt;triggers（触发器）：触发器包含调度逻辑，每一个作业有它自己的触发器<br>2&gt;job stores（作业存储）:用来存储被调度的作业，默认的作业存储器是简单地把作业任务保存在内存中,支持存储到MongoDB，Redis数据库中<br>3&gt; executors（执行器）：执行器用来执行定时任务，只是将需要执行的任务放在新的线程或者线程池中运行<br>4&gt;schedulers（调度器）：调度器是将其它部分联系在一起,对使用者提供接口，进行任务添加，设置，删除。</p>
+<p>来看一个简单例子：<br>‘’’<br>import time<br>from apscheduler.schedulers.blocking import BlockingScheduler<br>def func():<br>    now = datetime.datetime.now()<br>    ts = now.strftime(‘%Y-%m-%d %H:%M:%S’)<br>    print(‘do func  time :’,ts)</p>
+<p>def func2():<br>    #耗时2S<br>    now = datetime.datetime.now()<br>    ts = now.strftime(‘%Y-%m-%d %H:%M:%S’)<br>    print(‘do func2 time：’,ts)<br>    time.sleep(2)</p>
+<p>def dojob():<br>    #创建调度器：BlockingScheduler<br>    scheduler = BlockingScheduler()<br>    #添加任务,时间间隔2S<br>    scheduler.add_job(func, ‘interval’, seconds=2, id=’test_job1’)<br>    #添加任务,时间间隔5S<br>    scheduler.add_job(func2, ‘interval’, seconds=3, id=’test_job2’)<br>    scheduler.start()<br>dojob()<br>‘’’<br>输出结果：</p>
+<p>do func  time : 2019-03-22 10:32:20<br>do func2 time： 2019-03-22 10:32:21<br>do func  time : 2019-03-22 10:32:22<br>do func  time : 2019-03-22 10:32:24<br>do func2 time： 2019-03-22 10:32:24<br>do func  time : 2019-03-22 10:32:26</p>
 
         </div>
         <footer class="article-footer">
@@ -275,8 +281,8 @@
         "dateModified": "2020-05-20",
         "url": "https://babyhux.github.io/hexoblog/2020/05/20/python命令/",
         "description": "##大概记录下安装包的语句pip install 包名更新pip工具python -m pip install –upgrade pip查看包的路径和依赖pip show 包名查看包的命令帮助包名-h根据文本安装 pip install -r requirement.txt
-",
-        "wordCount": 14
+##任务框架APSchedulerAPScheduler是Python的一个定时任务框架，用于执行周期或者定时任务，可以基于",
+        "wordCount": 141
     }
 </script>
 
